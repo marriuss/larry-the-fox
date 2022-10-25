@@ -7,13 +7,10 @@ public class LevelSelectMenu : Menu
     [SerializeField] private LevelView _levelViewTemplate;
     [SerializeField] private GameObject _container;
 
-    private void Start()
+    protected override void PrepareMenu()
     {
-        if (_levelViewTemplate != null && _container != null)
-        {
-            foreach (MiniGameLevel level in _levels)
-                AddLevel(level);
-        }
+        foreach (MiniGameLevel level in _levels)
+            AddLevel(level);
     }
 
     private void AddLevel(MiniGameLevel level)

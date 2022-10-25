@@ -24,7 +24,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
     ""name"": ""Player"",
     ""maps"": [
         {
-            ""name"": ""Runner"",
+            ""name"": ""FoggyForest"",
             ""id"": ""9ffcfca6-f0b3-46f5-ad61-56994ea633d8"",
             ""actions"": [
                 {
@@ -61,6 +61,76 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""LarrysQuest"",
+            ""id"": ""e2d2e59f-9014-429e-afa8-c15b2de43964"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""ace8973c-1626-448a-a4e3-24f43a0f8186"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a25c15e-06b6-42d7-aadb-2810f6d69a26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3f34010b-c1f5-444c-832b-3787fea3594d"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67f4ece4-0cf7-425b-955a-cf8eb0cc8119"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cafbef59-fe94-4d3a-bcca-45dc81e60fc7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f970d585-6d5e-4e22-a0fd-3152fba1c9fc"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -76,9 +146,13 @@ public partial class @Player : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Runner
-        m_Runner = asset.FindActionMap("Runner", throwIfNotFound: true);
-        m_Runner_Jump = m_Runner.FindAction("Jump", throwIfNotFound: true);
+        // FoggyForest
+        m_FoggyForest = asset.FindActionMap("FoggyForest", throwIfNotFound: true);
+        m_FoggyForest_Jump = m_FoggyForest.FindAction("Jump", throwIfNotFound: true);
+        // LarrysQuest
+        m_LarrysQuest = asset.FindActionMap("LarrysQuest", throwIfNotFound: true);
+        m_LarrysQuest_Move = m_LarrysQuest.FindAction("Move", throwIfNotFound: true);
+        m_LarrysQuest_Click = m_LarrysQuest.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -135,29 +209,29 @@ public partial class @Player : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Runner
-    private readonly InputActionMap m_Runner;
-    private IRunnerActions m_RunnerActionsCallbackInterface;
-    private readonly InputAction m_Runner_Jump;
-    public struct RunnerActions
+    // FoggyForest
+    private readonly InputActionMap m_FoggyForest;
+    private IFoggyForestActions m_FoggyForestActionsCallbackInterface;
+    private readonly InputAction m_FoggyForest_Jump;
+    public struct FoggyForestActions
     {
         private @Player m_Wrapper;
-        public RunnerActions(@Player wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Jump => m_Wrapper.m_Runner_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_Runner; }
+        public FoggyForestActions(@Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jump => m_Wrapper.m_FoggyForest_Jump;
+        public InputActionMap Get() { return m_Wrapper.m_FoggyForest; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(RunnerActions set) { return set.Get(); }
-        public void SetCallbacks(IRunnerActions instance)
+        public static implicit operator InputActionMap(FoggyForestActions set) { return set.Get(); }
+        public void SetCallbacks(IFoggyForestActions instance)
         {
-            if (m_Wrapper.m_RunnerActionsCallbackInterface != null)
+            if (m_Wrapper.m_FoggyForestActionsCallbackInterface != null)
             {
-                @Jump.started -= m_Wrapper.m_RunnerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_RunnerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_RunnerActionsCallbackInterface.OnJump;
+                @Jump.started -= m_Wrapper.m_FoggyForestActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_FoggyForestActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_FoggyForestActionsCallbackInterface.OnJump;
             }
-            m_Wrapper.m_RunnerActionsCallbackInterface = instance;
+            m_Wrapper.m_FoggyForestActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Jump.started += instance.OnJump;
@@ -166,7 +240,48 @@ public partial class @Player : IInputActionCollection2, IDisposable
             }
         }
     }
-    public RunnerActions @Runner => new RunnerActions(this);
+    public FoggyForestActions @FoggyForest => new FoggyForestActions(this);
+
+    // LarrysQuest
+    private readonly InputActionMap m_LarrysQuest;
+    private ILarrysQuestActions m_LarrysQuestActionsCallbackInterface;
+    private readonly InputAction m_LarrysQuest_Move;
+    private readonly InputAction m_LarrysQuest_Click;
+    public struct LarrysQuestActions
+    {
+        private @Player m_Wrapper;
+        public LarrysQuestActions(@Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_LarrysQuest_Move;
+        public InputAction @Click => m_Wrapper.m_LarrysQuest_Click;
+        public InputActionMap Get() { return m_Wrapper.m_LarrysQuest; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(LarrysQuestActions set) { return set.Get(); }
+        public void SetCallbacks(ILarrysQuestActions instance)
+        {
+            if (m_Wrapper.m_LarrysQuestActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_LarrysQuestActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_LarrysQuestActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_LarrysQuestActionsCallbackInterface.OnMove;
+                @Click.started -= m_Wrapper.m_LarrysQuestActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_LarrysQuestActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_LarrysQuestActionsCallbackInterface.OnClick;
+            }
+            m_Wrapper.m_LarrysQuestActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
+            }
+        }
+    }
+    public LarrysQuestActions @LarrysQuest => new LarrysQuestActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -185,8 +300,13 @@ public partial class @Player : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_TouchScreenSchemeIndex];
         }
     }
-    public interface IRunnerActions
+    public interface IFoggyForestActions
     {
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface ILarrysQuestActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }

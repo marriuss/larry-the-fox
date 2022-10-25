@@ -1440,7 +1440,6 @@ GameObject:
   - component: {fileID: 5107324349117130152}
   - component: {fileID: 6259461140655298748}
   - component: {fileID: 1337261562227724943}
-  - component: {fileID: 6259461140655298747}
   - component: {fileID: 6553576328200717569}
   - component: {fileID: 7193974672941183359}
   - component: {fileID: 1870828092291776100}
@@ -1448,6 +1447,7 @@ GameObject:
   - component: {fileID: 5838068962714917005}
   - component: {fileID: 1870828092291776124}
   - component: {fileID: 1870828092291776125}
+  - component: {fileID: 1537969866606686803}
   m_Layer: 0
   m_Name: FoxRunner
   m_TagString: Untagged
@@ -1534,21 +1534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7379b73673ee0de42939f3129c86ef9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6259461140655298747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7872183651476106772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 848b75b17c777a44983fbecc68150bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityModifier: 1.1
-  _jumpHeight: 8
-  _speed: 15
 --- !u!114 &6553576328200717569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,6 +1632,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions: []
   _stateAnimation: Fall
+--- !u!114 &1537969866606686803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7872183651476106772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4231a6032daa3f54f8af084c372f1b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gravityModifier: 1.1
+  _jumpHeight: 8
+  _speed: 15
 --- !u!1 &7908387073786516824
 GameObject:
   m_ObjectHideFlags: 0

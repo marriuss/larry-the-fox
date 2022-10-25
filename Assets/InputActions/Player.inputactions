@@ -2,7 +2,7 @@
     "name": "Player",
     "maps": [
         {
-            "name": "Runner",
+            "name": "FoggyForest",
             "id": "9ffcfca6-f0b3-46f5-ad61-56994ea633d8",
             "actions": [
                 {
@@ -35,6 +35,76 @@
                     "processors": "",
                     "groups": "TouchScreen",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "LarrysQuest",
+            "id": "e2d2e59f-9014-429e-afa8-c15b2de43964",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "ace8973c-1626-448a-a4e3-24f43a0f8186",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "6a25c15e-06b6-42d7-aadb-2810f6d69a26",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3f34010b-c1f5-444c-832b-3787fea3594d",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67f4ece4-0cf7-425b-955a-cf8eb0cc8119",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "TouchScreen",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cafbef59-fe94-4d3a-bcca-45dc81e60fc7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f970d585-6d5e-4e22-a0fd-3152fba1c9fc",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "TouchScreen",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

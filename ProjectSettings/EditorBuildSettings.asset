@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 6ca168c4b5343744f8c3e96962d0d6af
+  - enabled: 1
+    path: Assets/Scenes/LarrysQuest.unity
+    guid: 70b74a5139c3dff4a8801458db2923dd
   m_configObjects: {}

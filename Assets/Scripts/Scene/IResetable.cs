@@ -1,0 +1,4 @@
+interface IResetable
+{
+    void ResetState();
+}

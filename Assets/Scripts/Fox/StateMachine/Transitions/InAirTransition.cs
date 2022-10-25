@@ -1,13 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(RunningMovement))]
 public class InAirTransition : Transition
 {
-    private Movement _movement;
+    private RunningMovement _movement;
 
     private void Awake()
     {
-        _movement = GetComponent<Movement>();
+        _movement = GetComponent<RunningMovement>();
     }
 
     private void Update()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Fox))]
-public class StateMachine : MonoBehaviour
+public class StateMachine : MonoBehaviour, IResetable
 {
     [SerializeField] private State _firstState;
 
@@ -15,6 +15,12 @@ public class StateMachine : MonoBehaviour
 
     private void Start()
     {
+        ResetState();
+    }
+
+    public void ResetState()
+    {
+        ExitCurrentState();
         EnterState(_firstState);
     }
 

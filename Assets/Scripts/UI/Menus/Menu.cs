@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class Menu : MonoBehaviour
+public class Menu : MonoBehaviour, IResetable
 {
     [SerializeField, Min(0.0f)] private float _openingTime;
 
@@ -14,6 +14,12 @@ public class Menu : MonoBehaviour
     }
 
     private void Start()
+    {
+        PrepareMenu();
+        ResetState();
+    }
+
+    public void ResetState() 
     {
         Close();
     }
@@ -31,6 +37,8 @@ public class Menu : MonoBehaviour
         _canvasGroup.alpha = 0;
         UnfrozeTime();
     }
+
+    protected virtual void PrepareMenu() { }
 
     private void FrozeTime()
     {

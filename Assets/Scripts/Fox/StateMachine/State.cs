@@ -55,11 +55,6 @@ public abstract class State : MonoBehaviour
         _animator.Play(_stateAnimation);
     }
 
-    protected void StopStateAnimation()
-    {
-        _animator.StopPlayback();
-    }
-
     private void OnTransitionConditionsMet(State state)
     {
         TransitionNeed?.Invoke(state);

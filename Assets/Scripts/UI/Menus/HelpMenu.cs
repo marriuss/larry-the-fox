@@ -3,11 +3,11 @@ using TMPro;
 
 public class HelpMenu : Menu
 {
+    [SerializeField] private LevelInfo _levelInfo;
     [SerializeField] private TMP_Text _helpText;
 
-    public void Initialize(string helpText)
+    protected override void PrepareMenu()
     {
-        if (_helpText != null)
-            _helpText.text = helpText;
+        _helpText.text = _levelInfo.Description;
     }
 }

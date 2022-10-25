@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SceneLoadButton : WorkButton
 {
     private Level _level;

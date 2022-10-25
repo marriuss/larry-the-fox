@@ -1,45 +1,29 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-[RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(RunningMovement))]
 public class FoxRunner : Fox
 {
-    private Movement _movement;
-
-    public int Points { get; private set; }
-
-    public event UnityAction Died;
-    public event UnityAction GotPoint;
+    private RunningMovement _movement;
 
     private void Awake()
     {
-        _movement = GetComponent<Movement>();
-    }
-
-    private void Start()
-    {
-        Points = 0;
-        GotPoint?.Invoke();
+        _movement = GetComponent<RunningMovement>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out Obstacle obstacle))
-            TakeDamage();
+        if (collision.collider.TryGetComponent(out Obstacle _))
+        {
+            LoseGame();
+            _movement.enabled = false;
+        }
 
         if (collision.collider.TryGetComponent(out PointTrigger _))
-            GetPoint();
+            GetPoints(1);
     }
 
-    private void TakeDamage()
+    protected override void Reset()
     {
-        Died?.Invoke();
-        _movement.enabled = false;
-    }
-
-    private void GetPoint()
-    {
-        Points++;
-        GotPoint?.Invoke();
+        _movement.enabled = true;
     }
 }
