@@ -223,7 +223,6 @@ GameObject:
   - component: {fileID: 2832177685311547709}
   - component: {fileID: 2832177685311547706}
   - component: {fileID: 2832177685311547704}
-  - component: {fileID: 587697111}
   m_Layer: 5
   m_Name: HelpMenu
   m_TagString: Untagged
@@ -276,19 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b27a4cd8b30b14f9afff0910b2cbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _openingTime: 0
+  _levelInfo: {fileID: 0}
   _helpText: {fileID: 2832177683881938347}
---- !u!114 &587697111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2832177685311547708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe2936815089d14cbfe86d536ea0a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2832177685570099921
 GameObject:
   m_ObjectHideFlags: 0
