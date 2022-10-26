@@ -1,4 +1,4 @@
-***Used assets:***
+#### Used assets:
 * https://assetstore.unity.com/packages/3d/characters/animals/toon-fox-183005
 * https://elthen.itch.io/2d-pixel-art-fox-sprites
 * https://assetstore.unity.com/packages/3d/environments/landscapes/free-low-poly-nature-forest-205742
