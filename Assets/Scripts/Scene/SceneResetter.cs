@@ -26,11 +26,6 @@ public class SceneResetter : MonoBehaviour
             instance.Add(resetableObject);
     }
 
-    private void Add(ResetableMonoBehaviour resetableObject)
-    {
-        resetableObjects.Add(resetableObject);
-    }
-
     public static void ResetScene()
     {
         if (instance != null)
@@ -38,5 +33,10 @@ public class SceneResetter : MonoBehaviour
             foreach (ResetableMonoBehaviour resetableObject in instance.resetableObjects)
                 resetableObject.ResetState();
         }
+    }
+
+    private void Add(ResetableMonoBehaviour resetableObject)
+    {
+        resetableObjects.Add(resetableObject);
     }
 }
