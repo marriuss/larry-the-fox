@@ -4,7 +4,7 @@ public abstract class ResetableMonoBehaviour : MonoBehaviour, IResetable
 {
     private void Start()
     {
-        SceneResetter.AddObject(this);
+        SceneResetter.AddResetableObject(this);
         ResetState();
     }
 

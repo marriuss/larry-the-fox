@@ -23,8 +23,6 @@ public class Menu : ResetableMonoBehaviour
     {
         _canvasGroup.blocksRaycasts = true;
         StartCoroutine(OpenMenu(_openingTime));
-        _canvasGroup.interactable = true;
-        FrozeTime();
     }
 
     public void Close()
@@ -64,5 +62,8 @@ public class Menu : ResetableMonoBehaviour
         {
             _canvasGroup.alpha = 1;
         }
+
+        _canvasGroup.interactable = true;
+        FrozeTime();
     }
 }

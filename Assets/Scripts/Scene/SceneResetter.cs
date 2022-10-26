@@ -3,21 +3,40 @@ using UnityEngine;
 
 public class SceneResetter : MonoBehaviour
 {
-    private static List<ResetableMonoBehaviour> resetableObjects;
+    private static SceneResetter instance;
+
+    private List<ResetableMonoBehaviour> resetableObjects;
 
     private void Awake()
     {
-        resetableObjects = new List<ResetableMonoBehaviour>();
+        if (instance == null)
+        {
+            instance = this;
+            resetableObjects = new List<ResetableMonoBehaviour>();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public static void AddObject(ResetableMonoBehaviour resetableObject)
+    public static void AddResetableObject(ResetableMonoBehaviour resetableObject)
+    {
+        if (instance != null)
+            instance.Add(resetableObject);
+    }
+
+    private void Add(ResetableMonoBehaviour resetableObject)
     {
         resetableObjects.Add(resetableObject);
     }
 
     public static void ResetScene()
     {
-        foreach (ResetableMonoBehaviour resetableObject in resetableObjects)
-            resetableObject.ResetState();
+        if (instance != null)
+        {
+            foreach (ResetableMonoBehaviour resetableObject in instance.resetableObjects)
+                resetableObject.ResetState();
+        }
     }
 }
