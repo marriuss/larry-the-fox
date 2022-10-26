@@ -1,4 +1,4 @@
-interface IResetable
+public interface IResetable
 {
     void ResetState();
 }

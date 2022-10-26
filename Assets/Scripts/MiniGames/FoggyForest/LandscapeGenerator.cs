@@ -2,7 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandscapeGenerator : MonoBehaviour, IResetable
+public class LandscapeGenerator : ResetableMonoBehaviour
 {
     [SerializeField] private Fox _player;
     [SerializeField] private Transform _playerSpawn;
@@ -23,10 +23,6 @@ public class LandscapeGenerator : MonoBehaviour, IResetable
     private void Awake()
     {
         _camera = Camera.main;
-    }
-
-    private void Start()
-    {
         _landscapePartsPool = new List<LandscapePart>();
         _spawnedLandscapeParts = new List<LandscapePart>();
 
@@ -41,9 +37,6 @@ public class LandscapeGenerator : MonoBehaviour, IResetable
             LandscapePart part = GenerateRandomLandscapePart();
             AddLandscapePartToPool(part);
         }
-
-        Spawn(Vector3.zero);
-        SetPlayer();
     }
 
     private void Update()
@@ -57,7 +50,7 @@ public class LandscapeGenerator : MonoBehaviour, IResetable
         }
     }
 
-    public void ResetState()
+    public override void ResetState()
     {
         bool isSpawned;
 
@@ -73,6 +66,11 @@ public class LandscapeGenerator : MonoBehaviour, IResetable
             _landscapePartsPool.Insert(0, _startLandscapePart);
         }
 
+        StartSpawn();
+    }
+
+    private void StartSpawn()
+    {
         Spawn(Vector3.zero);
         SetPlayer();
     }

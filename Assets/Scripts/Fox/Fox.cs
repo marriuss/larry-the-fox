@@ -1,7 +1,6 @@
-using UnityEngine;
 using UnityEngine.Events;
 
-public class Fox : MonoBehaviour, IResetable
+public class Fox : ResetableMonoBehaviour
 {
     public event UnityAction Won;
     public event UnityAction Lost;
@@ -9,19 +8,14 @@ public class Fox : MonoBehaviour, IResetable
 
     public int Points { get; private set; }
 
-    private void Start()
-    {
-        ResetState();
-    }
-
-    public void ResetState()
+    public override void ResetState()
     {
         Points = 0;
         PointsChanged?.Invoke();
-        Reset();
+        ResetAdditionalStats();
     }
 
-    protected virtual void Reset() { }
+    protected virtual void ResetAdditionalStats() { }
 
     protected void WinGame()
     {

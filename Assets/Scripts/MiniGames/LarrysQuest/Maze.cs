@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Maze : MonoBehaviour, IResetable
+public class Maze : ResetableMonoBehaviour
 {
     [SerializeField] private Transform _playerSpawn;
 
     private Fox _fox;
 
-    public void ResetState()
+    public override void ResetState()
     {
         _fox.transform.position = _playerSpawn.position;
     }

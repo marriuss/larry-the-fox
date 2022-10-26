@@ -2,31 +2,22 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
-public class Chest : MonoBehaviour, IResetable
+public class Chest : ResetableMonoBehaviour
 {
     [SerializeField, Min(1)] private int _pointsCost;
     [SerializeField] private UnityEvent _playerAppeared;
     [SerializeField] private UnityEvent _playerDisappeared;
 
-    private const float FadingDuration = 0f;
-
-    private SpriteRenderer _spriteRenderer;
     private Collider2D _collder;
 
     public int PointsCost => _pointsCost;
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _collder = GetComponent<Collider2D>();
     }
 
-    private void Start()
-    {
-        ResetState();
-    }
-
-    public void ResetState()
+    public override void ResetState()
     {
         _collder.enabled = true;
     }

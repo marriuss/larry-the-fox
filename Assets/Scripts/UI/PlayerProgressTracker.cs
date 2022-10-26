@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class PlayerProgressTracker : MonoBehaviour, IResetable
+public class PlayerProgressTracker : ResetableMonoBehaviour
 {
     [SerializeField] private Fox _player;
     [SerializeField] private TMP_Text _scoreText;
@@ -25,12 +25,7 @@ public class PlayerProgressTracker : MonoBehaviour, IResetable
         _player.Lost -= OnPlayerLost;
     }
 
-    private void Start()
-    {
-        ResetState();
-    }
-
-    public void ResetState()
+    public override void ResetState()
     {
         _scoreText.alpha = 1;
     }

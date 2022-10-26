@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class Menu : MonoBehaviour, IResetable
+public class Menu : ResetableMonoBehaviour
 {
     [SerializeField, Min(0.0f)] private float _openingTime;
 
@@ -11,15 +11,10 @@ public class Menu : MonoBehaviour, IResetable
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
-    }
-
-    private void Start()
-    {
         PrepareMenu();
-        ResetState();
     }
 
-    public void ResetState() 
+    public override void ResetState() 
     {
         Close();
     }
@@ -28,6 +23,8 @@ public class Menu : MonoBehaviour, IResetable
     {
         _canvasGroup.blocksRaycasts = true;
         StartCoroutine(OpenMenu(_openingTime));
+        _canvasGroup.interactable = true;
+        FrozeTime();
     }
 
     public void Close()
@@ -55,7 +52,7 @@ public class Menu : MonoBehaviour, IResetable
         if (openingTime > 0)
         {
             float timeElapsed = 0.0f;
-            
+
             while (_canvasGroup.alpha < 1)
             {
                 timeElapsed += Time.deltaTime;
@@ -63,9 +60,9 @@ public class Menu : MonoBehaviour, IResetable
                 yield return null;
             }
         }
-        else _canvasGroup.alpha = 1;
-
-        _canvasGroup.interactable = true;
-        FrozeTime();
+        else
+        {
+            _canvasGroup.alpha = 1;
+        }
     }
 }

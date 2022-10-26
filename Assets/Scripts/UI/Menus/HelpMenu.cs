@@ -8,6 +8,6 @@ public class HelpMenu : Menu
 
     protected override void PrepareMenu()
     {
-        _helpText.text = _levelInfo.Description;
+        _helpText.text = _levelInfo.Level.Description;
     }
 }

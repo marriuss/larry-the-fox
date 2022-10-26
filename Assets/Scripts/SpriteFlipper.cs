@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class SpriteFlipper : MonoBehaviour, IResetable
+public class SpriteFlipper : ResetableMonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
 
@@ -10,12 +10,7 @@ public class SpriteFlipper : MonoBehaviour, IResetable
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Start()
-    {
-        ResetState();
-    }
-
-    public void ResetState()
+    public override void ResetState()
     {
         _spriteRenderer.flipX = false;
     }

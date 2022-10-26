@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-public class RunningMovement : MonoBehaviour,  IResetable
+public class RunningMovement : ResetableMonoBehaviour  
 {
     [SerializeField, Min(0.1f)] private float _gravityModifier;
     [SerializeField, Min(0.1f)] private float _jumpHeight;
@@ -26,6 +26,7 @@ public class RunningMovement : MonoBehaviour,  IResetable
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.useGravity = false;
         _rigidbody.isKinematic = false;
+        _groundDistance = _collider.bounds.extents.y;
     }
 
     private void OnEnable()
@@ -38,12 +39,6 @@ public class RunningMovement : MonoBehaviour,  IResetable
     {
         _playerInput.Disable();
         _playerInput.FoggyForest.Jump.performed -= ctx => OnJump();
-    }
-
-    private void Start()
-    {
-        _groundDistance = _collider.bounds.extents.y;
-        ResetState();
     }
 
     private void FixedUpdate()
@@ -60,7 +55,7 @@ public class RunningMovement : MonoBehaviour,  IResetable
         _rigidbody.position += Vector3.up * yDeltaPosition;
     }
 
-    public void ResetState()
+    public override void ResetState()
     {
         _yMovement = 0;
     }

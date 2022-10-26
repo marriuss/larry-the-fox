@@ -1,18 +1,13 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class SpriteFader : MonoBehaviour, IResetable
+public class SpriteFader : ResetableMonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private const float FadingDuration = 0.1f;
 
-    private void Start()
-    {
-        ResetState();
-    }
-
-    public void ResetState()
+    public override void ResetState()
     {
         Appear();
     }

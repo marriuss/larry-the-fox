@@ -1,4 +1,4 @@
-public interface IMoving
+public interface IMovable
 {
     bool IsMoving { get; }
 }

@@ -1,13 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(IMoving))]
+[RequireComponent(typeof(IMovable))]
 public class IdleTransition : Transition
 {
-    private IMoving _movement;
+    private IMovable _movement;
 
     private void Awake()
     {
-        _movement = GetComponent<IMoving>();
+        _movement = GetComponent<IMovable>();
     }
 
     private void Update()

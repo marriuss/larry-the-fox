@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class OnClickMovement : MonoBehaviour, IMoving, IResetable
+public class OnClickMovement : ResetableMonoBehaviour, IMovable
 {
     [SerializeField, Min(0.1f)] private float _speed;
     [SerializeField] private UnityEvent<bool> _xMovementDirectionFlipped;
@@ -25,7 +25,8 @@ public class OnClickMovement : MonoBehaviour, IMoving, IResetable
 
     private void OnEnable()
     {
-        ResetState();
+        _playerInput.Enable();
+        _playerInput.LarrysQuest.Click.performed += ctx => OnMove();
     }
 
     private void OnDisable()
@@ -35,10 +36,8 @@ public class OnClickMovement : MonoBehaviour, IMoving, IResetable
         _playerInput.LarrysQuest.Click.performed -= ctx => OnMove();
     }
 
-    public void ResetState()
+    public override void ResetState()
     {
-        _playerInput.Enable();
-        _playerInput.LarrysQuest.Click.performed += ctx => OnMove();
         _isMovingLeft = false;
     }
 

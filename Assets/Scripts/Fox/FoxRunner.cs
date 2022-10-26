@@ -22,7 +22,7 @@ public class FoxRunner : Fox
             GetPoints(1);
     }
 
-    protected override void Reset()
+    protected override void ResetAdditionalStats()
     {
         _movement.enabled = true;
     }

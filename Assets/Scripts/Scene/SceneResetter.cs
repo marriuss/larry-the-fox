@@ -1,19 +1,23 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SceneResetter : MonoBehaviour
 {
-    private List<IResetable> _resetableObjects;
+    private static List<ResetableMonoBehaviour> resetableObjects;
 
-    private void Start()
+    private void Awake()
     {
-        _resetableObjects = FindObjectsOfType<MonoBehaviour>().OfType<IResetable>().ToList();
+        resetableObjects = new List<ResetableMonoBehaviour>();
     }
 
-    public void Reset()
+    public static void AddObject(ResetableMonoBehaviour resetableObject)
     {
-        foreach (IResetable resetableObject in _resetableObjects)
+        resetableObjects.Add(resetableObject);
+    }
+
+    public static void ResetScene()
+    {
+        foreach (ResetableMonoBehaviour resetableObject in resetableObjects)
             resetableObject.ResetState();
     }
 }

@@ -25,7 +25,7 @@ public class FoxQuester : Fox
         }
     }
 
-    protected override void Reset()
+    protected override void ResetAdditionalStats()
     {
         _movement.enabled = true;
     }
